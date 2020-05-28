@@ -167,27 +167,7 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc.CauHinh
                 TienIch.ShowCanhBao("Cảnh Báo", "Vui lòng chọn bản ghi muốn xóa");
             }
         }
-
-        //sự kiện xảy ra khi người dùng click vào 1 ô trong bảng(chưa chỉnh sửa)
-        private void dgvDonViTinh_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                //Nếu ô đang chọn thuộc hàng chứa bản ghi có dữ liệu hợp lý
-                if (e.RowIndex > -1 && (e.RowIndex < SoLuonBanGhi ||
-                   // (trường 'tên đơn vị' không bị bỏ trống)
-                   // thì select cả hàng đó luôn
-                   !string.IsNullOrEmpty(TienIch.XoaKhoangTrang(dgvDonViTinh.Rows[e.RowIndex].Cells[1].Value.ToString()))))
-                {
-                    dgvDonViTinh.Rows[e.RowIndex].Selected = true;
-                }
-            }
-            catch (Exception err)
-            {
-                TienIch.ShowLoi("Lỗi", err.Message);
-            }
-        }
-
+        
         //sự kiện xảy ra khi người dùng click vào nút lưu
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -220,6 +200,26 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc.CauHinh
 
             //load lại data từ db lên bảng
             LoadDataToGridView();
+        }
+
+        //sự kiện xảy ra khi người dùng click vào 1 ô trong bảng(chưa chỉnh sửa)
+        private void dgvDonViTinh_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //Nếu ô đang chọn thuộc hàng chứa bản ghi có dữ liệu hợp lý
+                if (e.RowIndex > -1 && (e.RowIndex < SoLuonBanGhi ||
+                   // (trường 'tên đơn vị' không bị bỏ trống)
+                   // thì select cả hàng đó luôn
+                   !string.IsNullOrEmpty(TienIch.XoaKhoangTrang(dgvDonViTinh.Rows[e.RowIndex].Cells[1].Value.ToString()))))
+                {
+                    dgvDonViTinh.Rows[e.RowIndex].Selected = true;
+                }
+            }
+            catch (Exception err)
+            {
+                TienIch.ShowLoi("Lỗi", err.Message);
+            }
         }
 
         //event xảy ra khi bắt đầu chỉnh sửa 1 ô trong bảng
