@@ -325,7 +325,6 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc.CauHinh
             //gắn lại giá trị cho editText về rỗng để thực hiện so sánh lần sau
             editText = "";
         }
-
         
     }
 }

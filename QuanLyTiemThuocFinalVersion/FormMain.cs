@@ -208,5 +208,15 @@ namespace QuanLyTiemThuocFinalVersion
                 showFormInMDIContainer(formCauHinhTrinhDo);
             }
         }
+
+        private void menuCauHinhCongDung_Click(object sender, EventArgs e)
+        {
+            if (!this.MdiChildren[0].Name.Equals("FormCauHinhCongDung"))
+            {
+                disposeAllMDIChildrenForms();
+                FormCauHinhCongDung formCauHinhCongDung = new FormCauHinhCongDung();
+                showFormInMDIContainer(formCauHinhCongDung);
+            }
+        }
     }
 }
