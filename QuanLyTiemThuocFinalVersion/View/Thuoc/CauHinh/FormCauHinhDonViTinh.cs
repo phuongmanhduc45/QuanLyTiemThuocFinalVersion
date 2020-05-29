@@ -55,8 +55,8 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc.CauHinh
             dgvDonViTinh.Columns[1].Resizable = System.Windows.Forms.DataGridViewTriState.False;
 
             //Cho người dùng thêm dữ liệu trực tiếp
-            dgvDonViTinh.AllowUserToAddRows = true; 
-            dgvDonViTinh.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2; 
+            dgvDonViTinh.AllowUserToAddRows = true;
+            dgvDonViTinh.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
 
             SoLuonBanGhi = tblDonViTinh.Rows.Count;
         }
@@ -167,7 +167,7 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc.CauHinh
                 TienIch.ShowCanhBao("Cảnh Báo", "Vui lòng chọn bản ghi muốn xóa");
             }
         }
-        
+
         //sự kiện xảy ra khi người dùng click vào nút lưu
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -325,6 +325,6 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc.CauHinh
             //gắn lại giá trị cho editText về rỗng để thực hiện so sánh lần sau
             editText = "";
         }
-        
+
     }
 }
