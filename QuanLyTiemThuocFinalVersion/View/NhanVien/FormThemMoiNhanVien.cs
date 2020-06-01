@@ -163,7 +163,7 @@ namespace QuanLyTiemThuocFinalVersion.View.NhanVien
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-
+            TienIch.ShowLoi("Errrrr", "Đang trong quá trình phát triển...");
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

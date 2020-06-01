@@ -107,12 +107,6 @@
     <Compile Include="View\HoaDonNhap\FormThongKeHoaDonNhap.Designer.cs">
       <DependentUpon>FormThongKeHoaDonNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\HoaDonNhap\SubScreen\FormEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\HoaDonNhap\SubScreen\FormEdit.Designer.cs">
-      <DependentUpon>FormEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\NhanVien\CauHinh\FormCauHinhChuyenMon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,9 +202,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\HoaDonNhap\FormThongKeHoaDonNhap.resx">
       <DependentUpon>FormThongKeHoaDonNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\HoaDonNhap\SubScreen\FormEdit.resx">
-      <DependentUpon>FormEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\NhanVien\CauHinh\FormCauHinhChuyenMon.resx">
       <DependentUpon>FormCauHinhChuyenMon.cs</DependentUpon>
