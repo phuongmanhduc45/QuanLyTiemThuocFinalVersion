@@ -167,10 +167,10 @@ namespace QuanLyTiemThuocFinalVersion.View.NhanVien.CauHinh
             //duyệt danh sách chứa các bản ghi cần thêm mới vào db
             if (insertRows.Count > 0)
             {
-                foreach (string donViTinhMoi in insertRows)
+                foreach (string chuyenMonMoi in insertRows)
                 {
                     string sqlInsert = "Insert into ChuyenMon (Ten) Values (N'" +
-                        TienIch.XoaKhoangTrang(donViTinhMoi) + "')";
+                        TienIch.XoaKhoangTrang(chuyenMonMoi.ToLower()) + "')";
                     DataBaseFunction.ExcuteSQL(sqlInsert);
                 }
                 // Xóa danh sách chứa các bản ghi cần insert mới 
@@ -183,7 +183,7 @@ namespace QuanLyTiemThuocFinalVersion.View.NhanVien.CauHinh
             {
                 foreach (ChuyenMon chuyenMonMoi in editedRows)
                 {
-                    string sqlUpdate = "Update ChuyenMon Set Ten=N'" + chuyenMonMoi.Ten + "' where Id=" + chuyenMonMoi.Id;
+                    string sqlUpdate = "Update ChuyenMon Set Ten=N'" + chuyenMonMoi.Ten.ToLower() + "' where Id=" + chuyenMonMoi.Id;
                     DataBaseFunction.ExcuteSQL(sqlUpdate);
                 }
                 //Xóa danh sách chứa index các bản ghi đã được chỉnh sửa 

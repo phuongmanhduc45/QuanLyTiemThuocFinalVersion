@@ -42,7 +42,7 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonBan
             dgvNhaCungCap.Columns[0].Resizable = DataGridViewTriState.False;
             dgvNhaCungCap.Columns[0].ToolTipText = "Mã của nhà cung cấp lưu trong cơ sở dữ liệu";
 
-            dgvNhaCungCap.Columns[1].HeaderText = "Tên Khách Hàng";
+            dgvNhaCungCap.Columns[1].HeaderText = "Tên Nhà Cung Cấp";
             dgvNhaCungCap.Columns[1].Width = 300;
             dgvNhaCungCap.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dgvNhaCungCap.Columns[1].Resizable = DataGridViewTriState.False;
@@ -68,6 +68,7 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonBan
             if (!tbSoDienThoai.Text.All(char.IsDigit))
             {
                 TienIch.ShowCanhBao("Không hợp lệ", "Số điện thoại bạn nhập vào không hợp lệ!\n Số điện thoại chỉ được chứa chữ số(0-9)");
+                tbSoDienThoai.Text = "";
             }
         }
 

@@ -30,9 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panelThongKeKhachHang = new System.Windows.Forms.Panel();
+            this.dgvKhachHang = new System.Windows.Forms.DataGridView();
+            this.btnTaiLaiBang = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.tbDiaChi = new System.Windows.Forms.TextBox();
@@ -41,9 +42,8 @@
             this.lblSoDienThoai = new System.Windows.Forms.Label();
             this.lblTen = new System.Windows.Forms.Label();
             this.lblDiaChi = new System.Windows.Forms.Label();
-            this.btnTaiLaiBang = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.dgvKhachHang = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelThongKeKhachHang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
@@ -71,24 +71,6 @@
             this.panel1.Size = new System.Drawing.Size(834, 437);
             this.panel1.TabIndex = 1;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 75);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // panelThongKeKhachHang
             // 
             this.panelThongKeKhachHang.Controls.Add(this.dgvKhachHang);
@@ -107,6 +89,40 @@
             this.panelThongKeKhachHang.Name = "panelThongKeKhachHang";
             this.panelThongKeKhachHang.Size = new System.Drawing.Size(834, 437);
             this.panelThongKeKhachHang.TabIndex = 2;
+            // 
+            // dgvKhachHang
+            // 
+            this.dgvKhachHang.AllowUserToAddRows = false;
+            this.dgvKhachHang.AllowUserToDeleteRows = false;
+            this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKhachHang.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvKhachHang.Location = new System.Drawing.Point(0, 97);
+            this.dgvKhachHang.Name = "dgvKhachHang";
+            this.dgvKhachHang.Size = new System.Drawing.Size(834, 340);
+            this.dgvKhachHang.TabIndex = 10;
+            this.dgvKhachHang.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvKhachHang_CellBeginEdit);
+            this.dgvKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellClick);
+            this.dgvKhachHang.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellEndEdit);
+            // 
+            // btnTaiLaiBang
+            // 
+            this.btnTaiLaiBang.Location = new System.Drawing.Point(12, 11);
+            this.btnTaiLaiBang.Name = "btnTaiLaiBang";
+            this.btnTaiLaiBang.Size = new System.Drawing.Size(75, 23);
+            this.btnTaiLaiBang.TabIndex = 9;
+            this.btnTaiLaiBang.Text = "Tải Lại Bảng";
+            this.btnTaiLaiBang.UseVisualStyleBackColor = true;
+            this.btnTaiLaiBang.Click += new System.EventHandler(this.btnTaiLaiBang_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(12, 52);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 8;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnTimKiem
             // 
@@ -179,39 +195,23 @@
             this.lblDiaChi.TabIndex = 0;
             this.lblDiaChi.Text = "Địa Chỉ";
             // 
-            // btnTaiLaiBang
+            // button2
             // 
-            this.btnTaiLaiBang.Location = new System.Drawing.Point(12, 11);
-            this.btnTaiLaiBang.Name = "btnTaiLaiBang";
-            this.btnTaiLaiBang.Size = new System.Drawing.Size(75, 23);
-            this.btnTaiLaiBang.TabIndex = 9;
-            this.btnTaiLaiBang.Text = "Tải Lại Bảng";
-            this.btnTaiLaiBang.UseVisualStyleBackColor = true;
-            this.btnTaiLaiBang.Click += new System.EventHandler(this.btnTaiLaiBang_Click);
+            this.button2.Location = new System.Drawing.Point(12, 75);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnXoa
+            // button1
             // 
-            this.btnXoa.Location = new System.Drawing.Point(12, 52);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 8;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // dgvKhachHang
-            // 
-            this.dgvKhachHang.AllowUserToAddRows = false;
-            this.dgvKhachHang.AllowUserToDeleteRows = false;
-            this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKhachHang.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvKhachHang.Location = new System.Drawing.Point(0, 97);
-            this.dgvKhachHang.Name = "dgvKhachHang";
-            this.dgvKhachHang.Size = new System.Drawing.Size(834, 340);
-            this.dgvKhachHang.TabIndex = 10;
-            this.dgvKhachHang.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvKhachHang_CellBeginEdit);
-            this.dgvKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellClick);
-            this.dgvKhachHang.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhachHang_CellEndEdit);
+            this.button1.Location = new System.Drawing.Point(12, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FormThongKeKhachHang
             // 

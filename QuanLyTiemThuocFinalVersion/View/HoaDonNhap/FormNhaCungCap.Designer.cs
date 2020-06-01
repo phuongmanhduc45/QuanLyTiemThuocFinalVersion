@@ -30,17 +30,17 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panelThemNhaCungCap = new System.Windows.Forms.Panel();
-            this.dgvNhaCungCap = new System.Windows.Forms.DataGridView();
-            this.lblDiaChi = new System.Windows.Forms.Label();
-            this.lblTen = new System.Windows.Forms.Label();
-            this.lblSoDienThoai = new System.Windows.Forms.Label();
-            this.tbTen = new System.Windows.Forms.TextBox();
-            this.tbSoDienThoai = new System.Windows.Forms.TextBox();
-            this.tbDiaChi = new System.Windows.Forms.TextBox();
-            this.btnThem = new System.Windows.Forms.Button();
+            this.btnTaiLaiBang = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.btnTaiLaiBang = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.tbDiaChi = new System.Windows.Forms.TextBox();
+            this.tbSoDienThoai = new System.Windows.Forms.TextBox();
+            this.tbTen = new System.Windows.Forms.TextBox();
+            this.lblSoDienThoai = new System.Windows.Forms.Label();
+            this.lblTen = new System.Windows.Forms.Label();
+            this.lblDiaChi = new System.Windows.Forms.Label();
+            this.dgvNhaCungCap = new System.Windows.Forms.DataGridView();
             this.panelThemNhaCungCap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhaCungCap)).BeginInit();
             this.SuspendLayout();
@@ -74,80 +74,15 @@
             this.panelThemNhaCungCap.Size = new System.Drawing.Size(834, 437);
             this.panelThemNhaCungCap.TabIndex = 1;
             // 
-            // dgvNhaCungCap
+            // btnTaiLaiBang
             // 
-            this.dgvNhaCungCap.AllowUserToAddRows = false;
-            this.dgvNhaCungCap.AllowUserToDeleteRows = false;
-            this.dgvNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNhaCungCap.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvNhaCungCap.Location = new System.Drawing.Point(0, 121);
-            this.dgvNhaCungCap.Name = "dgvNhaCungCap";
-            this.dgvNhaCungCap.Size = new System.Drawing.Size(834, 340);
-            this.dgvNhaCungCap.TabIndex = 0;
-            this.dgvNhaCungCap.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvNhaCungCap_CellBeginEdit);
-            this.dgvNhaCungCap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellClick);
-            this.dgvNhaCungCap.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellEndEdit);
-            // 
-            // lblDiaChi
-            // 
-            this.lblDiaChi.AutoSize = true;
-            this.lblDiaChi.Location = new System.Drawing.Point(128, 62);
-            this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(41, 13);
-            this.lblDiaChi.TabIndex = 0;
-            this.lblDiaChi.Text = "Địa Chỉ";
-            // 
-            // lblTen
-            // 
-            this.lblTen.AutoSize = true;
-            this.lblTen.Location = new System.Drawing.Point(132, 21);
-            this.lblTen.Name = "lblTen";
-            this.lblTen.Size = new System.Drawing.Size(26, 13);
-            this.lblTen.TabIndex = 0;
-            this.lblTen.Text = "Tên";
-            // 
-            // lblSoDienThoai
-            // 
-            this.lblSoDienThoai.AutoSize = true;
-            this.lblSoDienThoai.Location = new System.Drawing.Point(403, 21);
-            this.lblSoDienThoai.Name = "lblSoDienThoai";
-            this.lblSoDienThoai.Size = new System.Drawing.Size(75, 13);
-            this.lblSoDienThoai.TabIndex = 1;
-            this.lblSoDienThoai.Text = "Số Điện Thoại";
-            // 
-            // tbTen
-            // 
-            this.tbTen.Location = new System.Drawing.Point(175, 18);
-            this.tbTen.Name = "tbTen";
-            this.tbTen.Size = new System.Drawing.Size(202, 20);
-            this.tbTen.TabIndex = 2;
-            this.tbTen.Leave += new System.EventHandler(this.tbTen_Leave);
-            // 
-            // tbSoDienThoai
-            // 
-            this.tbSoDienThoai.Location = new System.Drawing.Point(484, 21);
-            this.tbSoDienThoai.Name = "tbSoDienThoai";
-            this.tbSoDienThoai.Size = new System.Drawing.Size(202, 20);
-            this.tbSoDienThoai.TabIndex = 3;
-            this.tbSoDienThoai.Leave += new System.EventHandler(this.tbSoDienThoai_Leave);
-            // 
-            // tbDiaChi
-            // 
-            this.tbDiaChi.Location = new System.Drawing.Point(175, 59);
-            this.tbDiaChi.Name = "tbDiaChi";
-            this.tbDiaChi.Size = new System.Drawing.Size(511, 20);
-            this.tbDiaChi.TabIndex = 4;
-            this.tbDiaChi.Leave += new System.EventHandler(this.tbDiaChi_Leave);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(713, 21);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 23);
-            this.btnThem.TabIndex = 5;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            this.btnTaiLaiBang.Location = new System.Drawing.Point(12, 18);
+            this.btnTaiLaiBang.Name = "btnTaiLaiBang";
+            this.btnTaiLaiBang.Size = new System.Drawing.Size(75, 23);
+            this.btnTaiLaiBang.TabIndex = 7;
+            this.btnTaiLaiBang.Text = "Tải Lại Bảng";
+            this.btnTaiLaiBang.UseVisualStyleBackColor = true;
+            this.btnTaiLaiBang.Click += new System.EventHandler(this.btnTaiLaiBang_Click);
             // 
             // btnXoa
             // 
@@ -169,15 +104,80 @@
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // btnTaiLaiBang
+            // btnThem
             // 
-            this.btnTaiLaiBang.Location = new System.Drawing.Point(12, 18);
-            this.btnTaiLaiBang.Name = "btnTaiLaiBang";
-            this.btnTaiLaiBang.Size = new System.Drawing.Size(75, 23);
-            this.btnTaiLaiBang.TabIndex = 7;
-            this.btnTaiLaiBang.Text = "Tải Lại Bảng";
-            this.btnTaiLaiBang.UseVisualStyleBackColor = true;
-            this.btnTaiLaiBang.Click += new System.EventHandler(this.btnTaiLaiBang_Click);
+            this.btnThem.Location = new System.Drawing.Point(713, 21);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(75, 23);
+            this.btnThem.TabIndex = 5;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // tbDiaChi
+            // 
+            this.tbDiaChi.Location = new System.Drawing.Point(175, 59);
+            this.tbDiaChi.Name = "tbDiaChi";
+            this.tbDiaChi.Size = new System.Drawing.Size(511, 20);
+            this.tbDiaChi.TabIndex = 4;
+            this.tbDiaChi.Leave += new System.EventHandler(this.tbDiaChi_Leave);
+            // 
+            // tbSoDienThoai
+            // 
+            this.tbSoDienThoai.Location = new System.Drawing.Point(484, 21);
+            this.tbSoDienThoai.Name = "tbSoDienThoai";
+            this.tbSoDienThoai.Size = new System.Drawing.Size(202, 20);
+            this.tbSoDienThoai.TabIndex = 3;
+            this.tbSoDienThoai.Leave += new System.EventHandler(this.tbSoDienThoai_Leave);
+            // 
+            // tbTen
+            // 
+            this.tbTen.Location = new System.Drawing.Point(175, 18);
+            this.tbTen.Name = "tbTen";
+            this.tbTen.Size = new System.Drawing.Size(202, 20);
+            this.tbTen.TabIndex = 2;
+            this.tbTen.Leave += new System.EventHandler(this.tbTen_Leave);
+            // 
+            // lblSoDienThoai
+            // 
+            this.lblSoDienThoai.AutoSize = true;
+            this.lblSoDienThoai.Location = new System.Drawing.Point(403, 21);
+            this.lblSoDienThoai.Name = "lblSoDienThoai";
+            this.lblSoDienThoai.Size = new System.Drawing.Size(75, 13);
+            this.lblSoDienThoai.TabIndex = 1;
+            this.lblSoDienThoai.Text = "Số Điện Thoại";
+            // 
+            // lblTen
+            // 
+            this.lblTen.AutoSize = true;
+            this.lblTen.Location = new System.Drawing.Point(132, 21);
+            this.lblTen.Name = "lblTen";
+            this.lblTen.Size = new System.Drawing.Size(26, 13);
+            this.lblTen.TabIndex = 0;
+            this.lblTen.Text = "Tên";
+            // 
+            // lblDiaChi
+            // 
+            this.lblDiaChi.AutoSize = true;
+            this.lblDiaChi.Location = new System.Drawing.Point(128, 62);
+            this.lblDiaChi.Name = "lblDiaChi";
+            this.lblDiaChi.Size = new System.Drawing.Size(41, 13);
+            this.lblDiaChi.TabIndex = 0;
+            this.lblDiaChi.Text = "Địa Chỉ";
+            // 
+            // dgvNhaCungCap
+            // 
+            this.dgvNhaCungCap.AllowUserToAddRows = false;
+            this.dgvNhaCungCap.AllowUserToDeleteRows = false;
+            this.dgvNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNhaCungCap.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvNhaCungCap.Location = new System.Drawing.Point(0, 121);
+            this.dgvNhaCungCap.Name = "dgvNhaCungCap";
+            this.dgvNhaCungCap.Size = new System.Drawing.Size(834, 340);
+            this.dgvNhaCungCap.TabIndex = 0;
+            this.dgvNhaCungCap.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvNhaCungCap_CellBeginEdit);
+            this.dgvNhaCungCap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellClick);
+            this.dgvNhaCungCap.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellEndEdit);
             // 
             // FormNhaCungCap
             // 

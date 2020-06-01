@@ -68,6 +68,7 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonBan
             if (!tbSoDienThoai.Text.All(char.IsDigit))
             {
                 TienIch.ShowCanhBao("Không hợp lệ", "Số điện thoại bạn nhập vào không hợp lệ!\n Số điện thoại chỉ được chứa chữ số(0-9)");
+                tbSoDienThoai.Text = "";
             }
         }
 
@@ -349,7 +350,7 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonBan
                         TienIch.ShowLoi("Dữ Liệu không phù hợp", "Chỉ chấp nhận các ký tự là số từ 0~9");
                         dgvKhachHang.Rows[e.RowIndex].Cells[3].Value = editSoDienThoai;
                     }
-                    
+
                 }
                 //set lại biến để dùng cho lần edit sau
                 editSoDienThoai = "";
@@ -366,6 +367,6 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonBan
             string sqlUpdate = "Update KhachHang set " + tenCot + "=N'" + giaTriMoi + "' where Id=" + id;
             DataBaseFunction.ExcuteSQL(sqlUpdate);
         }
-    
+
     }
 }

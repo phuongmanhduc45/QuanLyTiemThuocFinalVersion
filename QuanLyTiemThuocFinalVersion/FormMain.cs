@@ -171,11 +171,11 @@ namespace QuanLyTiemThuocFinalVersion
 
         private void menuThemMoiNhanVien_Click(object sender, EventArgs e)
         {
-            if (!this.MdiChildren[0].Name.Equals("FormThemMoiThuoc"))
+            if (!this.MdiChildren[0].Name.Equals("FormThemMoiNhanVien"))
             {
                 disposeAllMDIChildrenForms();
-                FormThemMoiThuoc formThemMoiThuoc = new FormThemMoiThuoc();
-                showFormInMDIContainer(formThemMoiThuoc);
+                FormThemMoiNhanVien formThemMoiNhanVien = new FormThemMoiNhanVien();
+                showFormInMDIContainer(formThemMoiNhanVien);
             }
         }
 
