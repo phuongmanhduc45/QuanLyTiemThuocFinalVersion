@@ -15,11 +15,9 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc
 {
     public partial class FormThemMoiThuoc : Form
     {
-        private int listLenght;
         public FormThemMoiThuoc()
         {
             InitializeComponent();
-            listLenght = 0;
             LoadDataToCbxCongDung();
             LoadDataToCbxDonViTinh();
             LoadDataToCbxNuocSanXuat();
@@ -270,7 +268,7 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc
             }
             else
             {
-                TienIch.ShowCanhBao("Cảnh Báo", "Số Lượng Hiện Có phải là số tự nhiên lớn hơn hoặc bằng 0");
+                TienIch.ShowCanhBao("Cảnh Báo", "Giá Nhập phải là số tự nhiên lớn hơn hoặc bằng 0");
                 tbGiaNhap.Focus();
                 tbGiaNhap.SelectionLength = tbGiaNhap.Text.Length;
             }
