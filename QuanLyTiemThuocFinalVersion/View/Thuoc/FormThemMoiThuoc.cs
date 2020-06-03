@@ -191,7 +191,7 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc
                     {
                         //xóa text trên ô combobox
                         cbxCongDung.SelectedIndex = 0;
-                        TienIch.ShowThanhCong("Rest data", "Dữ liệu ô Nước Sản Xuất đã bị xóa do bạn không muốn thêm mới Nước Sản Xuất này vào hệ thống.");
+                        TienIch.ShowThanhCong("Rest data", "Dữ liệu ô Công Dụng đã bị xóa do bạn không muốn thêm mới Công Dụng này vào hệ thống.");
                     }
                 }
             }
@@ -338,10 +338,13 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc
                 danhSachCongDung.Add(DataBaseFunction.GetItemId(sqlSelectId));
             }
 
-            foreach (int id in danhSachCongDung)
+            foreach (int idCongDung in danhSachCongDung)
             {
-                string sqlInsert = "Insert into ThuocCongDung(IdThuoc,IdCongDung) values(" + thuocId + "," + id + ")";
-                DataBaseFunction.ExcuteSQL(sqlInsert);
+                if (!DataBaseFunction.IsExisted("Select * from ThuocCongDung where IdThuoc=" + thuocId + " and IdCongDung=" + idCongDung))
+                {
+                    string sqlInsert = "Insert into ThuocCongDung(IdThuoc,IdCongDung) values(" + thuocId + "," + idCongDung + ")";
+                    DataBaseFunction.ExcuteSQL(sqlInsert);
+                }
             }
 
         }

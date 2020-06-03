@@ -19,7 +19,6 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonNhap
         {
             InitializeComponent();
         }
-
         private void FormThemMoiHoaDonNhap_Load(object sender, EventArgs e)
         {
             LoadDataToCbxTenThuoc();
@@ -67,7 +66,7 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonNhap
                     {
                         //xóa text trên ô combobox
                         cbxNhaCungCap.SelectedIndex = 0;
-                        TienIch.ShowThanhCong("Rest data", "Dữ liệu ô trình độ đã bị xóa do bạn không muốn thêm mới Nhà Cung Cấp này vào hệ thống.");
+                        TienIch.ShowThanhCong("Rest data", "Dữ liệu ô nhà cung cấp đã bị xóa do bạn không muốn thêm mới Nhà Cung Cấp này vào hệ thống.");
                     }
                 }
             }
@@ -212,6 +211,8 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonNhap
                 TienIch.ShowCanhBao("Cảnh Báo", "Phải nhập tên thuốc.");
                 cbxTenThuoc.Text = tenThuoc;
                 cbxTenThuoc.Focus();
+                cbxNhaCungCap.Enabled = true;
+                dtpNgayNhap.Enabled = true;
             }
             else
             {
@@ -364,8 +365,8 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonNhap
                 TongTien = tongTien
             };
 
-            string sqlInsert = "Insert into HoaDonNhap (IdNhanVien,IdNhaCungCap,NgayNhap,TongTien) "
-                + "values(" + hoanDonNhap.IdNhanVien + "," + hoanDonNhap.IdNhaCungCap + ",'" + hoanDonNhap.NgayNhap + "'," + hoanDonNhap.TongTien + ")";
+             string sqlInsert = "Insert into HoaDonNhap (IdNhanVien,IdNhaCungCap,NgayNhap,TongTien) "
+                + "values(" + hoanDonNhap.IdNhanVien + "," + hoanDonNhap.IdNhaCungCap + ",'" + hoanDonNhap.NgayNhap.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'," + hoanDonNhap.TongTien + ")";
             DataBaseFunction.ExcuteSQL(sqlInsert);
 
             string sqlGetLast = "SELECT TOP 1 Id FROM HoaDonNhap ORDER BY ID DESC";
@@ -444,7 +445,6 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonNhap
             dtpNgaySanXuat.Value = DateTime.Parse(dgvHoaDonNhap.Rows[e.RowIndex].Cells[6].Value.ToString());
             dtpHanSuDung.Value = DateTime.Parse(dgvHoaDonNhap.Rows[e.RowIndex].Cells[7].Value.ToString());
         }
-
 
         private void dgvHoaDonNhap_CellClick(object sender, DataGridViewCellEventArgs e)
         {
