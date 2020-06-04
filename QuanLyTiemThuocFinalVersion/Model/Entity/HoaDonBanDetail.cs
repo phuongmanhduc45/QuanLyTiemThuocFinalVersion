@@ -9,6 +9,7 @@ namespace QuanLyTiemThuocFinalVersion.Model.Entity
     public class HoaDonBanDetail
     {
         public int Id { get; set; }
+        public int IdHoaDonBan { get; set; }
         public int IdThuoc { get; set; }
         public int SoLuong { get; set; }
         public float GiamGia { get; set; }

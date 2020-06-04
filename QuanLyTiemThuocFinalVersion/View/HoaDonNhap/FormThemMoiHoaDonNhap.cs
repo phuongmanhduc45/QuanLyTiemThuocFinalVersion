@@ -144,7 +144,14 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonNhap
                 float khuyenMaiValue;
                 if (float.TryParse(khuyenMai, out khuyenMaiValue))
                 {
-                    tbKhuyenMai.Text = khuyenMaiValue.ToString();
+                    if (khuyenMaiValue <= 0 || khuyenMaiValue >= 100)
+                    {
+                        TienIch.ShowCanhBao("Cảnh Báo", "Vui lòng nhập vào giá trị hợp lệ( nhỏ hơn 100 và lớn hoặc bằng 0)");
+                    }
+                    else
+                    {
+                        tbKhuyenMai.Text = khuyenMaiValue.ToString();
+                    }
                 }
                 else
                 {
@@ -301,102 +308,109 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonNhap
         /// <param name="e"></param>
         private void btnNhap_Click(object sender, EventArgs e)
         {
-            int idNhanVien = DataBaseFunction.GetItemId("Select top 1 * From NhanVien");
-            int idNhaCungCap = DataBaseFunction.GetItemId("Select * From NhaCungCap where Ten=N'" + cbxNhaCungCap.Text + "'");
-            DateTime ngayNhap = dtpNgayNhap.Value;
-            float tongTien = 0;
-            foreach (DataGridViewRow row in dgvHoaDonNhap.Rows)
+            if (dgvHoaDonNhap.Rows.Count > 0)
             {
-                float donGia = float.Parse(row.Cells[2].Value.ToString());
-                float giaBan = donGia * (float)1.1;
-
-                //thuốc này chưa có trong db
-                if (cbxTenThuoc.FindString(row.Cells[0].Value.ToString()) == -1)
+                int idNhanVien = DataBaseFunction.GetItemId("Select top 1 * From NhanVien");
+                int idNhaCungCap = DataBaseFunction.GetItemId("Select * From NhaCungCap where Ten=N'" + cbxNhaCungCap.Text + "'");
+                DateTime ngayNhap = dtpNgayNhap.Value;
+                float tongTien = 0;
+                foreach (DataGridViewRow row in dgvHoaDonNhap.Rows)
                 {
-                    Model.Entity.Thuoc thuocMoi = new Model.Entity.Thuoc
+                    float donGia = float.Parse(row.Cells[2].Value.ToString());
+                    float giaBan = donGia * (float)1.1;
+
+                    //thuốc này chưa có trong db
+                    if (cbxTenThuoc.FindString(row.Cells[0].Value.ToString()) == -1)
                     {
-                        Ten = cbxTenThuoc.Text,
-                        SoLuongHienCo = Int32.Parse(row.Cells[1].Value.ToString()),
-                        DonGiaNhap = donGia,
-                        GiaBan = donGia * (float)1.1,
-                        NgaySanXuat = dtpNgaySanXuat.Value,
-                        HanSuDung = dtpHanSuDung.Value
-                    };
-                    string sqlThemThuocMoi = "Insert into Thuoc (Ten,SoLuongHienCo,DonGiaNhap,GiaBan,NgaySanXuat,HanSuDung) "
-                        + "values (N'" + thuocMoi.Ten + "'," + thuocMoi.SoLuongHienCo + ","
-                        + thuocMoi.DonGiaNhap + "," + thuocMoi.GiaBan + ",'"
-                        + thuocMoi.NgaySanXuat.ToString("yyyy-MM-dd HH:mm:ss.fff") + "','"
-                        + thuocMoi.HanSuDung.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
-                    DataBaseFunction.ExcuteSQL(sqlThemThuocMoi);
-                }
-                //thuốc này đã có trong db
-                //cập nhật thông tin cho thuốc
-                else
-                {
-                    Model.Entity.Thuoc thuocCu = new Model.Entity.Thuoc
+                        Model.Entity.Thuoc thuocMoi = new Model.Entity.Thuoc
+                        {
+                            Ten = cbxTenThuoc.Text,
+                            SoLuongHienCo = Int32.Parse(row.Cells[1].Value.ToString()),
+                            DonGiaNhap = donGia,
+                            GiaBan = donGia * (float)1.1,
+                            NgaySanXuat = dtpNgaySanXuat.Value,
+                            HanSuDung = dtpHanSuDung.Value
+                        };
+                        string sqlThemThuocMoi = "Insert into Thuoc (Ten,SoLuongHienCo,DonGiaNhap,GiaBan,NgaySanXuat,HanSuDung) "
+                            + "values (N'" + thuocMoi.Ten + "'," + thuocMoi.SoLuongHienCo + ","
+                            + thuocMoi.DonGiaNhap + "," + thuocMoi.GiaBan + ",'"
+                            + thuocMoi.NgaySanXuat.ToString("yyyy-MM-dd HH:mm:ss.fff") + "','"
+                            + thuocMoi.HanSuDung.ToString("yyyy-MM-dd HH:mm:ss.fff") + "')";
+                        DataBaseFunction.ExcuteSQL(sqlThemThuocMoi);
+                    }
+                    //thuốc này đã có trong db
+                    //cập nhật thông tin cho thuốc
+                    else
                     {
-                        Id = DataBaseFunction.GetItemId("Select * from Thuoc where Ten=N'" + row.Cells[0].Value.ToString() + "'"),
-                        SoLuongHienCo = Int32.Parse(row.Cells[1].Value.ToString()),
-                        DonGiaNhap = donGia,
-                        GiaBan = giaBan,
-                        NgaySanXuat = DateTime.Parse(row.Cells[5].Value.ToString()),
-                        HanSuDung = DateTime.Parse(row.Cells[6].Value.ToString())
-                    };
+                        Model.Entity.Thuoc thuocCu = new Model.Entity.Thuoc
+                        {
+                            Id = DataBaseFunction.GetItemId("Select * from Thuoc where Ten=N'" + row.Cells[0].Value.ToString() + "'"),
+                            SoLuongHienCo = Int32.Parse(row.Cells[1].Value.ToString()),
+                            DonGiaNhap = donGia,
+                            GiaBan = giaBan,
+                            NgaySanXuat = DateTime.Parse(row.Cells[5].Value.ToString()),
+                            HanSuDung = DateTime.Parse(row.Cells[6].Value.ToString())
+                        };
 
-                    float soLuongCu = DataBaseFunction.GetItemId("Select SoLuongHienCo from Thuoc where Id=" + thuocCu.Id);
-                    float soLuongMoi = thuocCu.SoLuongHienCo + soLuongCu;
-                    string sqlUpdateThuocCu = "Update Thuoc set SoLuongHienCo=" + soLuongMoi
-                        + " , DonGiaNhap=" + thuocCu.DonGiaNhap + " , GiaBan=" + thuocCu.GiaBan
-                        + " , NgaySanXuat='" + thuocCu.NgaySanXuat.ToString("yyyy-MM-dd HH:mm:ss.fff")
-                        + "' , HanSuDung='" + thuocCu.HanSuDung.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'"
-                        + " where Id=" + thuocCu.Id;
-                    DataBaseFunction.ExcuteSQL(sqlUpdateThuocCu);
+                        float soLuongCu = DataBaseFunction.GetItemId("Select SoLuongHienCo from Thuoc where Id=" + thuocCu.Id);
+                        float soLuongMoi = thuocCu.SoLuongHienCo + soLuongCu;
+                        string sqlUpdateThuocCu = "Update Thuoc set SoLuongHienCo=" + soLuongMoi
+                            + " , DonGiaNhap=" + thuocCu.DonGiaNhap + " , GiaBan=" + thuocCu.GiaBan
+                            + " , NgaySanXuat='" + thuocCu.NgaySanXuat.ToString("yyyy-MM-dd HH:mm:ss.fff")
+                            + "' , HanSuDung='" + thuocCu.HanSuDung.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'"
+                            + " where Id=" + thuocCu.Id;
+                        DataBaseFunction.ExcuteSQL(sqlUpdateThuocCu);
+                    }
+                    tongTien += donGia * (1 - (float.Parse(row.Cells[3].Value.ToString()) / 100));
                 }
-                tongTien += donGia * (1 - (float.Parse(row.Cells[3].Value.ToString()) / 100));
-            }
 
-            //.ToString("yyyy-MM-dd HH:mm:ss.fff")
+                //.ToString("yyyy-MM-dd HH:mm:ss.fff")
 
-            Model.Entity.HoanDonNhap hoanDonNhap = new Model.Entity.HoanDonNhap
-            {
-                IdNhaCungCap = idNhaCungCap,
-                IdNhanVien = idNhanVien,
-                NgayNhap = ngayNhap,
-                TongTien = tongTien
-            };
-
-             string sqlInsert = "Insert into HoaDonNhap (IdNhanVien,IdNhaCungCap,NgayNhap,TongTien) "
-                + "values(" + hoanDonNhap.IdNhanVien + "," + hoanDonNhap.IdNhaCungCap + ",'" + hoanDonNhap.NgayNhap.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'," + hoanDonNhap.TongTien + ")";
-            DataBaseFunction.ExcuteSQL(sqlInsert);
-
-            string sqlGetLast = "SELECT TOP 1 Id FROM HoaDonNhap ORDER BY ID DESC";
-            int idHoaDonNhap = DataBaseFunction.GetItemId(sqlGetLast);
-
-            foreach (DataGridViewRow row in dgvHoaDonNhap.Rows)
-            {
-                int idThuoc = DataBaseFunction.GetItemId("Select Id from Thuoc where Ten=N'" + row.Cells[0] + "'");
-                HoaDonNhapDetail hoaDonNhapDetail = new HoaDonNhapDetail
+                Model.Entity.HoanDonNhap hoanDonNhap = new Model.Entity.HoanDonNhap
                 {
-                    IdHoaDonNhap = idHoaDonNhap,
-                    IdThuoc = idThuoc,
-                    DonGia = float.Parse(row.Cells[2].Value.ToString()),
-                    KhuyenMai = float.Parse(row.Cells[3].Value.ToString()),
-                    ThanhTien = float.Parse(row.Cells[2].Value.ToString()) * (1 - (float.Parse(row.Cells[3].Value.ToString()) / 100))
+                    IdNhaCungCap = idNhaCungCap,
+                    IdNhanVien = idNhanVien,
+                    NgayNhap = ngayNhap,
+                    TongTien = tongTien
                 };
 
-                string sqlInsertHoaDonNhapDetail = "Insert into HoaDonNhapDetail (IdHoaDonNhap, IdThuoc, SoLuongNhap, DonGia, KhuyenMai, ThanhTien)\n"
-                    + " values (" + hoaDonNhapDetail.IdHoaDonNhap + "," + hoaDonNhapDetail.IdThuoc
-                    + "," + hoaDonNhapDetail.SoLuongNhap + "," + hoaDonNhapDetail.DonGia + ","
-                    + hoaDonNhapDetail.KhuyenMai + "," + hoaDonNhapDetail.ThanhTien + ")";
-                DataBaseFunction.ExcuteSQL(sqlInsertHoaDonNhapDetail);
-            }
+                string sqlInsert = "Insert into HoaDonNhap (IdNhanVien,IdNhaCungCap,NgayNhap,TongTien) "
+                   + "values(" + hoanDonNhap.IdNhanVien + "," + hoanDonNhap.IdNhaCungCap + ",'" + hoanDonNhap.NgayNhap.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'," + hoanDonNhap.TongTien + ")";
+                DataBaseFunction.ExcuteSQL(sqlInsert);
 
-            //chuyen qua man hinh hoa don nhap?
-            dgvHoaDonNhap.DataSource = MakeTableWithAutoIncrement();
-            cbxNhaCungCap.Enabled = true;
-            dtpNgayNhap.Enabled = true;
-            cbxTenThuoc.Text = "";
-            LoadDataToCbxTenThuoc();
+                string sqlGetLast = "SELECT TOP 1 Id FROM HoaDonNhap ORDER BY ID DESC";
+                int idHoaDonNhap = DataBaseFunction.GetItemId(sqlGetLast);
+
+                foreach (DataGridViewRow row in dgvHoaDonNhap.Rows)
+                {
+                    int idThuoc = DataBaseFunction.GetItemId("Select Id from Thuoc where Ten=N'" + row.Cells[0] + "'");
+                    HoaDonNhapDetail hoaDonNhapDetail = new HoaDonNhapDetail
+                    {
+                        IdHoaDonNhap = idHoaDonNhap,
+                        IdThuoc = idThuoc,
+                        DonGia = float.Parse(row.Cells[2].Value.ToString()),
+                        KhuyenMai = float.Parse(row.Cells[3].Value.ToString()),
+                        ThanhTien = float.Parse(row.Cells[2].Value.ToString()) * (1 - (float.Parse(row.Cells[3].Value.ToString()) / 100))
+                    };
+
+                    string sqlInsertHoaDonNhapDetail = "Insert into HoaDonNhapDetail (IdHoaDonNhap, IdThuoc, SoLuongNhap, DonGia, KhuyenMai, ThanhTien)\n"
+                        + " values (" + hoaDonNhapDetail.IdHoaDonNhap + "," + hoaDonNhapDetail.IdThuoc
+                        + "," + hoaDonNhapDetail.SoLuongNhap + "," + hoaDonNhapDetail.DonGia + ","
+                        + hoaDonNhapDetail.KhuyenMai + "," + hoaDonNhapDetail.ThanhTien + ")";
+                    DataBaseFunction.ExcuteSQL(sqlInsertHoaDonNhapDetail);
+                }
+
+                //chuyen qua man hinh hoa don nhap?
+                dgvHoaDonNhap.DataSource = MakeTableWithAutoIncrement();
+                cbxNhaCungCap.Enabled = true;
+                dtpNgayNhap.Enabled = true;
+                cbxTenThuoc.Text = "";
+                LoadDataToCbxTenThuoc();
+            }
+            else
+            {
+                TienIch.ShowCanhBao("Cảnh Báo", "Hóa đơn nhập đang bị để trống!");
+            }
         }
 
         private void dgvHoaDonNhap_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

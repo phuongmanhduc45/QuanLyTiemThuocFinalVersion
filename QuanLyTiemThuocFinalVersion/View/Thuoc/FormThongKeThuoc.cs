@@ -207,7 +207,11 @@ namespace QuanLyTiemThuocFinalVersion.View.Thuoc
 
         private void dgvThuoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //loại trừ trường hợp user chọn title của bảng
+            if (e.RowIndex > -1)
+            {
+                dgvThuoc.Rows[e.RowIndex].Selected = true;
+            }
         }
 
         private void dgvThuoc_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)

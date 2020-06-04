@@ -170,22 +170,7 @@ namespace QuanLyTiemThuocFinalVersion.View.HoaDonNhap
                 }
                 else
                 {
-                    DialogResult result = TienIch.ShowXacThuc("Cảnh Báo", "Bạn đang nhập tên Nhân Viên mới chưa có trong csdl\n Bạn Có muốn thêm mới Nhân Viên này vào trong csdl?");
-                    if (result == DialogResult.Yes)
-                    {
-                        //Thêm mới bản ghi vào trong db
-                        string sqlInsert = "Insert into NhanVien (Ten) values (N'" + cbxValue + "')";
-                        DataBaseFunction.ExcuteSQL(sqlInsert);
-                        LoadDataToCbxNhaCungCap();
-                        cbxNhanVien.SelectedIndex = cbxNhanVien.Items.Count - 1;
-                        TienIch.ShowThanhCong("Thành Công", "Thêm mới thành công");
-                    }
-                    else if (result == DialogResult.No)
-                    {
-                        //xóa text trên ô combobox
-                        cbxNhanVien.SelectedIndex = 0;
-                        TienIch.ShowThanhCong("Rest data", "Dữ liệu ô nhân viên đã bị xóa do bạn không muốn thêm mới Nhân Viên này vào hệ thống.");
-                    }
+                    TienIch.ShowCanhBao("Cảnh Báo", "Hãy chọn tháng từ 1 tới 12");
                 }
             }
         }

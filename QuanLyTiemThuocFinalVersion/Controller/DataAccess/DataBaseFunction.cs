@@ -58,6 +58,21 @@ namespace QuanLyTiemThuocFinalVersion.Controller.DataAccess
             return -1;
         }
 
+        public static string GetItemValue(string sql)
+        {
+            Connect();
+            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand(sql, Conn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0].ItemArray[0].ToString();
+            }
+            return "";
+        }
+
+
         public static void ExcuteSQL(string sql)
         {
             SqlCommand cmd = new SqlCommand();
